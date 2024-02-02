@@ -5,13 +5,14 @@ namespace Database\Seeders;
 use App\Models\Train;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Faker\Generator as Faker;
 
 class TrainSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run(Faker $faker): void
     {
         $trains = [
             [
@@ -61,6 +62,21 @@ class TrainSeeder extends Seeder
             $liveTrain->carriage_number = $train['carriage_number'];
             $liveTrain->on_time = $train['on_time'];
             $liveTrain->cancellate = $train['cancellate'];
+            $liveTrain->save();
+        }
+
+        for ($i = 0; $i < 47; $i++) {
+            $liveTrain = new Train();
+
+            $liveTrain->name_company = $faker->name();
+            $liveTrain->departure_station = $faker->city();
+            $liveTrain->arrival_station = $faker->city();
+            $liveTrain->departure_time = $faker->dateTimeBetween('now', '+10 minutes');
+            $liveTrain->arrival_time = $faker->dateTimeBetween('-1 week', '+3 days');
+            $liveTrain->code_train = $faker->unique()->randomNumber(6);
+            $liveTrain->carriage_number = $faker->numberBetween(1, 4);
+            $liveTrain->on_time = $faker->boolean();
+            $liveTrain->cancellate = $faker->boolean();
             $liveTrain->save();
         }
     }
