@@ -1,0 +1,3 @@
+<footer>
+    Partials.Footer
+</footer>

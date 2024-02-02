@@ -5,12 +5,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title></title>
+    <title>@yield('title', 'Trenito')</title>
     @vite('resources/js/app.js')
+    @yield('head-content')
+
 </head>
-
+    @include('partials.header')
 <body>
-
+    <main>
+        Home.blade
+        @yield('main-content')
+    </main>
 </body>
-
+    @include('partials.footer')
+@yield('script-content')
 </html>
