@@ -13,7 +13,7 @@
     @include('partials.header')
 <body>
     <main>
-        Home.blade
+        Layouts.Home
         @yield('main-content')
     </main>
 </body>
