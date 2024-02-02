@@ -16,9 +16,9 @@ return new class extends Migration
             $table->string('name_company', 30);
             $table->string('departure_station', 50);
             $table->string('arrival_station', 50);
-            $table->time('departure_time');
-            $table->time('arrival_time');
-            $table->string('code_train', 10)->unique();
+            $table->dateTime('departure_time');
+            $table->dateTime('arrival_time');
+            $table->integer('code_train')->unique();
             $table->string('carriage_number', 2);
             $table->boolean('on_time')->default(true);
             $table->boolean('cancellate')->default(false);
