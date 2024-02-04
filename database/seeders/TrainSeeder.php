@@ -6,6 +6,7 @@ use App\Models\Train;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
+use Illuminate\Cache\RateLimiting\Limit;
 
 class TrainSeeder extends Seeder
 {
@@ -76,7 +77,11 @@ class TrainSeeder extends Seeder
             $liveTrain->code_train = $faker->unique()->randomNumber(6);
             $liveTrain->carriage_number = $faker->numberBetween(1, 4);
             $liveTrain->on_time = $faker->boolean();
-            $liveTrain->cancellate = $faker->boolean();
+            if ($liveTrain->on_time == true) {
+                $liveTrain->cancellate = $faker->boolean(false);
+            } else {
+                $liveTrain->cancellate = $faker->boolean(true);
+            }
             $liveTrain->save();
         }
     }

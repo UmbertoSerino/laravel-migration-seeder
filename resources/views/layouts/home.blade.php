@@ -10,13 +10,12 @@
     @yield('head-content')
 
 </head>
-    @include('partials.header')
 <body>
+    @include('partials.header')
     <main>
-        Layouts.Home
         @yield('main-content')
     </main>
-</body>
     @include('partials.footer')
+</body>
 @yield('script-content')
 </html>

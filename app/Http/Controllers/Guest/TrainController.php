@@ -10,7 +10,10 @@ class TrainController extends Controller
 {
     public function index()
     {
-        $tranisList = Train::all();
+        // questo fa in modo di prenderli tutti
+        // $tranisList = Train::all();
+        $tranisList = Train::limit(20)->get();
+
         return view('guest.train', compact('tranisList'));
     }
 }

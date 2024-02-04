@@ -30,11 +30,10 @@
                     <td>{{ $train['arrival_time'] }}</td>
                     <td>{{ $train['code_train'] }}</td>
                     <td>{{ $train['carriage_number'] }}</td>
-                    @if ('on_time' == true){
+                    @if ($train->on_time == true)
                         <td>In orario</td>
-                    } @else{
-                        <td>{{ $train['cancellate'] }}</td>
-                    }
+                     @else
+                        <td>Cancellato</td>
                     
                     @endif
                     @empty
@@ -45,3 +44,4 @@
               </table>
         </div>
 </article>
+@endsection
