@@ -20,8 +20,8 @@ return new class extends Migration
             $table->dateTime('arrival_time');
             $table->integer('code_train')->unique();
             $table->string('carriage_number', 2);
-            $table->boolean('on_time')->default(true);
-            $table->boolean('cancellate')->default(false);
+            $table->boolean('on_time');
+            $table->boolean('cancelled');
             $table->timestamps();
         });
     }

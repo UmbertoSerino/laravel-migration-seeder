@@ -25,7 +25,7 @@ class TrainSeeder extends Seeder
                 'code_train' => 125032,
                 'carriage_number' => '4',
                 'on_time' => true,
-                'cancellate' => false,
+                'cancelled' => false,
             ],
             [
                 'name_company' => 'RyanTrain',
@@ -36,7 +36,7 @@ class TrainSeeder extends Seeder
                 'code_train' => 125035,
                 'carriage_number' => '1',
                 'on_time' => true,
-                'cancellate' => false,
+                'cancelled' => false,
             ],
             [
                 'name_company' => 'Treni e non',
@@ -47,7 +47,7 @@ class TrainSeeder extends Seeder
                 'code_train' => 12505,
                 'carriage_number' => '5',
                 'on_time' => true,
-                'cancellate' => false,
+                'cancelled' => false,
             ]
         ];
 
@@ -62,7 +62,7 @@ class TrainSeeder extends Seeder
             $liveTrain->code_train = $train['code_train'];
             $liveTrain->carriage_number = $train['carriage_number'];
             $liveTrain->on_time = $train['on_time'];
-            $liveTrain->cancellate = $train['cancellate'];
+            $liveTrain->cancelled = $train['cancelled'];
             $liveTrain->save();
         }
 
@@ -76,12 +76,8 @@ class TrainSeeder extends Seeder
             $liveTrain->arrival_time = $faker->dateTimeBetween('-1 week', '+3 days');
             $liveTrain->code_train = $faker->unique()->randomNumber(6);
             $liveTrain->carriage_number = $faker->numberBetween(1, 4);
-            $liveTrain->on_time = $faker->boolean();
-            if ($liveTrain->on_time == true) {
-                $liveTrain->cancellate = $faker->boolean(false);
-            } else {
-                $liveTrain->cancellate = $faker->boolean(true);
-            }
+            $liveTrain->on_time = $faker->boolean(40);
+            $liveTrain->cancelled = $faker->boolean(15);
             $liveTrain->save();
         }
     }

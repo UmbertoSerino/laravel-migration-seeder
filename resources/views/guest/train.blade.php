@@ -17,6 +17,7 @@
                         <th scope="col">Codice treno</th>
                         <th scope="col">Binario</th>
                         <th scope="col">Ritardo</th>
+                        <th scope="col">Altro</th>   
                     </tr>
                 </thead>
                 <tbody>
@@ -33,8 +34,10 @@
                     @if ($train->on_time == true)
                         <td>In orario</td>
                      @else
+                        <td>In ritardo</td>
+                    @endif
+                    @if ($train->on_time == false && $train->cancelled == true)
                         <td>Cancellato</td>
-                    
                     @endif
                     @empty
                     <th>Non ci sono treni per oggi!</th>
